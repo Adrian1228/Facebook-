@@ -1,6 +1,7 @@
 package me.adrianalvarez.facebook.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,7 +32,7 @@ private val FacebookDarkText = Color(0xFF1C1E21)
 
 
 @Composable
-fun FacebookLoginScreen(onClickRegister : () -> Unit, onClickIniciarSesion: () -> Unit) {
+fun FacebookLoginScreen(onClickRegister : () -> Unit, onClickIniciarSesion: () -> Unit, onClickOlvidaste: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -108,6 +109,7 @@ fun FacebookLoginScreen(onClickRegister : () -> Unit, onClickIniciarSesion: () -
         TextButton(onClick = {}) {
             Text(
                 text = "¿Olvidaste tu contraseña?",
+                modifier = Modifier.clickable{ onClickOlvidaste () },
                 color = FacebookTextGray,
                 fontSize = 14.sp
             )

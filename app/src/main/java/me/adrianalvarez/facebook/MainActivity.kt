@@ -12,7 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import me.adrianalvarez.facebook.ui.screens.FacebookLoginScreen
 import me.adrianalvarez.facebook.ui.screens.FacebookRegisterScreen
 import me.adrianalvarez.facebook.ui.screens.FeedScreen
-
+import me.adrianalvarez.facebook.ui.screens.FacebookRecoverScreen
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,8 @@ class MainActivity : ComponentActivity() {
                     },
                         onClickIniciarSesion = {
                             myNavController.navigate(route = "feed")
-                        }
+                        },
+                        onClickOlvidaste = {myNavController.navigate(route = "recover")}
                     )
                 }
                 composable(route = "register") {
@@ -47,6 +48,16 @@ class MainActivity : ComponentActivity() {
                 }
                 composable(route = "feed") {
                     FeedScreen()
+                }
+                composable(route = "recover") {
+                    FacebookRecoverScreen(
+                        onClickBack = {
+                            myNavController.popBackStack()
+                        },
+                        onClickRecuperar = { email ->
+                            // Aquí va la lógica de recuperación
+                        }
+                    )
                 }
 
             }
